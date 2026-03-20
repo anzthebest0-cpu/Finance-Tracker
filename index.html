@@ -407,33 +407,56 @@ var DEF_BDG = {
 };
 var QA = [5000,10000,20000,50000,100000,200000,500000,1000000];
 var HABITS = [
-  {id:'h_spend_log',n:'Catat Pengeluaran',e:'📝',freq:'daily',cat:'finance'},
-  {id:'h_check_bal',n:'Cek Saldo Rekening',e:'💰',freq:'daily',cat:'finance'},
-  {id:'h_no_impulse',n:'Hindari Pembelian Impulsif',e:'🚫',freq:'daily',cat:'finance'},
-  {id:'h_water',n:'Minum Air 8 Gelas',e:'💧',freq:'daily',cat:'health'},
-  {id:'h_exercise',n:'Olahraga / Aktivitas Fisik',e:'🏃',freq:'daily',cat:'health'},
-  {id:'h_read',n:'Baca Minimal 10 Menit',e:'📖',freq:'daily',cat:'mental'},
-  {id:'h_sleep',n:'Tidur 7-8 Jam',e:'😴',freq:'daily',cat:'health'},
-  {id:'h_grateful',n:'Syukur & Refleksi Harian',e:'🙏',freq:'daily',cat:'mental'},
-  {id:'h_eat_well',n:'Makan Sehat & Bergizi',e:'🥗',freq:'daily',cat:'health'},
-  {id:'h_no_jajan',n:'Tidak Jajan Berlebihan',e:'🍱',freq:'daily',cat:'finance'},
-  {id:'h_bdg_rev',n:'Review Anggaran Mingguan',e:'📊',freq:'weekly',cat:'finance'},
-  {id:'h_pay_bills',n:'Bayar Tagihan Tepat Waktu',e:'💳',freq:'weekly',cat:'finance'},
-  {id:'h_clean',n:'Bersih-Bersih Rumah',e:'🧹',freq:'weekly',cat:'lifestyle'},
-  {id:'h_family',n:'Hubungi Keluarga / Teman',e:'📞',freq:'weekly',cat:'social'},
-  {id:'h_meal_plan',n:'Rencanakan Menu Mingguan',e:'🥘',freq:'weekly',cat:'health'},
-  {id:'h_goal_rev',n:'Review Tujuan Keuangan',e:'🎯',freq:'weekly',cat:'finance'},
-  {id:'h_fin_rev',n:'Review Keuangan Bulanan',e:'📈',freq:'monthly',cat:'finance'},
-  {id:'h_invest_rev',n:'Cek & Rebalance Investasi',e:'📉',freq:'monthly',cat:'finance'},
-  {id:'h_bpjs',n:'Bayar BPJS / Asuransi',e:'🏥',freq:'monthly',cat:'finance'},
-  {id:'h_sub_audit',n:'Audit Langganan Digital',e:'❌',freq:'monthly',cat:'finance'},
-  {id:'h_networth',n:'Update Catatan Net Worth',e:'💎',freq:'monthly',cat:'finance'},
-  {id:'h_emergency',n:'Tabung Dana Darurat',e:'🏦',freq:'monthly',cat:'finance'},
-  {id:'h_donate',n:'Donasi & Sedekah',e:'🤲',freq:'monthly',cat:'social'},
-  {id:'h_portfolio',n:'Review Portofolio Investasi',e:'📊',freq:'quarterly',cat:'finance'},
-  {id:'h_checkup',n:'Medical Check-up',e:'🩺',freq:'quarterly',cat:'health'},
-  {id:'h_annual',n:'Rencana Keuangan Tahunan',e:'📅',freq:'yearly',cat:'finance'},
-  {id:'h_insurance',n:'Review Proteksi Asuransi',e:'🛡️',freq:'yearly',cat:'finance'}
+  // ── HARIAN: KEUANGAN ──
+  {id:'h_log_exp',   n:'Catat setiap pengeluaran hari ini',          e:'📝', freq:'daily', cat:'finance',  desc:'Tulis nominal, kategori, dan metode bayar'},
+  {id:'h_no_impulse',n:'Tidak beli sesuatu tanpa direncanakan',      e:'🚫', freq:'daily', cat:'finance',  desc:'Tanya: "Butuh atau sekadar ingin?"'},
+  {id:'h_cek_saldo', n:'Cek saldo semua akun & e-wallet',            e:'💰', freq:'daily', cat:'finance',  desc:'BCA, GoPay, DANA, OVO, dll.'},
+  {id:'h_bawa_bekal',n:'Bawa bekal / makan dari rumah',              e:'🍱', freq:'daily', cat:'finance',  desc:'Hemat Rp15–30rb per hari'},
+  {id:'h_kopi_rumah',n:'Buat kopi/minuman sendiri di rumah',         e:'☕', freq:'daily', cat:'finance',  desc:'Hemat Rp10–20rb vs beli di luar'},
+  {id:'h_no_promo',  n:'Tidak tergoda diskon/flash sale hari ini',   e:'🏷️', freq:'daily', cat:'finance',  desc:'Diskon bukan alasan untuk membeli'},
+  // ── HARIAN: KESEHATAN ──
+  {id:'h_water',     n:'Minum air putih minimal 8 gelas (2L)',       e:'💧', freq:'daily', cat:'health',   desc:'Tandai setiap 250ml yang diminum'},
+  {id:'h_exercise',  n:'Olahraga/aktivitas fisik min. 30 menit',     e:'🏃', freq:'daily', cat:'health',   desc:'Jalan kaki, lari, push-up, dll.'},
+  {id:'h_sleep',     n:'Tidur jam 22.00–23.00, bangun jam 05.00–06.00',e:'😴',freq:'daily',cat:'health',  desc:'7–8 jam tidur berkualitas'},
+  {id:'h_sayur',     n:'Makan sayur & buah minimal 1 porsi',         e:'🥗', freq:'daily', cat:'health',   desc:'Penuhi kebutuhan serat & vitamin'},
+  {id:'h_no_rokok',  n:'Bebas rokok hari ini',                       e:'🚭', freq:'daily', cat:'health',   desc:'Hemat sekaligus sehat'},
+  {id:'h_no_junkfood',n:'Tidak makan junk food / gorengan berlebihan',e:'🍔',freq:'daily', cat:'health',  desc:'Max 1x jika terpaksa'},
+  // ── HARIAN: MENTAL & PRODUKTIVITAS ──
+  {id:'h_read',      n:'Baca buku/artikel edukatif min. 20 menit',   e:'📖', freq:'daily', cat:'mental',   desc:'Investasi ilmu: keuangan, karir, umum'},
+  {id:'h_grateful',  n:'Tulis 3 hal yang disyukuri hari ini',        e:'🙏', freq:'daily', cat:'mental',   desc:'Latih mindset positif & cukup'},
+  {id:'h_focus',     n:'Kerjakan 1 tugas terpenting tanpa distraksi',e:'🎯', freq:'daily', cat:'mental',   desc:'Deep work min. 45 menit'},
+  {id:'h_no_sosmed', n:'Batasi media sosial max. 1 jam/hari',        e:'📵', freq:'daily', cat:'mental',   desc:'Kurangi FOMO & keinginan konsumtif'},
+  {id:'h_ibadah',    n:'Ibadah & dzikir pagi-sore',                  e:'🤲', freq:'daily', cat:'mental',   desc:'Sholat 5 waktu + dzikir'},
+  // ── MINGGUAN: KEUANGAN ──
+  {id:'h_budget_rev',n:'Review & update anggaran mingguan',          e:'📊', freq:'weekly', cat:'finance', desc:'Cocokkan rencana vs realisasi pengeluaran'},
+  {id:'h_tagihan',   n:'Cek semua tagihan jatuh tempo minggu ini',   e:'💳', freq:'weekly', cat:'finance', desc:'Listrik, air, internet, kartu kredit'},
+  {id:'h_transfer_tab',n:'Transfer ke rekening tabungan/investasi',  e:'🏦', freq:'weekly', cat:'finance', desc:'Pay yourself first: sisihkan sebelum belanja'},
+  {id:'h_meal_plan', n:'Rencanakan menu & belanja mingguan',         e:'🛒', freq:'weekly', cat:'finance', desc:'Belanja terencana mencegah pemborosan'},
+  {id:'h_rekap_minggu',n:'Rekap pengeluaran terbesar minggu ini',    e:'🗒️', freq:'weekly', cat:'finance', desc:'Identifikasi mana yang bisa dikurangi'},
+  // ── MINGGUAN: KESEHATAN & SOSIAL ──
+  {id:'h_bersih',    n:'Bersihkan rumah/kamar secara menyeluruh',    e:'🧹', freq:'weekly', cat:'lifestyle',desc:'Lingkungan bersih = pikiran lebih jernih'},
+  {id:'h_keluarga',  n:'Quality time dengan keluarga / orang tua',  e:'👨‍👩‍👧', freq:'weekly',cat:'social',  desc:'Telpon, kunjungi, atau makan bersama'},
+  {id:'h_masak',     n:'Masak sendiri minimal 3x seminggu',          e:'🍳', freq:'weekly', cat:'health',  desc:'Lebih sehat dan jauh lebih hemat'},
+  {id:'h_olahraga_intens',n:'Olahraga intensitas tinggi 1x seminggu',e:'💪',freq:'weekly', cat:'health',  desc:'Gym, futsal, berenang, badminton'},
+  // ── BULANAN: KEUANGAN ──
+  {id:'h_fin_rev',   n:'Review keuangan bulanan secara menyeluruh',  e:'📈', freq:'monthly', cat:'finance', desc:'Bandingkan target vs realisasi semua pos'},
+  {id:'h_bayar_bpjs',n:'Bayar BPJS Kesehatan & Ketenagakerjaan',    e:'🏥', freq:'monthly', cat:'finance', desc:'Jangan sampai lapse, cek melalui JKN Mobile'},
+  {id:'h_sub_audit', n:'Audit & potong langganan digital yang tidak dipakai',e:'❌',freq:'monthly',cat:'finance',desc:'Netflix, Spotify, dll. — hanya yang rutin dipakai'},
+  {id:'h_networth',  n:'Update catatan kekayaan bersih (net worth)', e:'💎', freq:'monthly', cat:'finance', desc:'Aset − Utang = Pertumbuhan finansial'},
+  {id:'h_emergency', n:'Tambah dana darurat (target 6x pengeluaran)',e:'🛡️', freq:'monthly', cat:'finance', desc:'Dana darurat = fondasi keuangan sehat'},
+  {id:'h_invest_top',n:'Top-up investasi (reksa dana/saham/emas)',   e:'📉', freq:'monthly', cat:'finance', desc:'Minimal 10–20% dari penghasilan'},
+  {id:'h_gaji_alokasi',n:'Alokasikan gaji sesuai budget yang telah dibuat',e:'✂️',freq:'monthly',cat:'finance',desc:'50/30/20: kebutuhan/keinginan/tabungan'},
+  {id:'h_donate',    n:'Donasi & sedekah rutin',                     e:'🤲', freq:'monthly', cat:'social',  desc:'Minimal 2.5% dari penghasilan (zakat maal)'},
+  // ── KUARTALAN ──
+  {id:'h_portfolio', n:'Review & rebalance portofolio investasi',    e:'⚖️', freq:'quarterly', cat:'finance', desc:'Sesuaikan alokasi aset dengan tujuan keuangan'},
+  {id:'h_tujuan_fin',n:'Evaluasi kemajuan tujuan keuangan jangka panjang',e:'🎯',freq:'quarterly',cat:'finance',desc:'Rumah, pensiun, pendidikan anak, dll.'},
+  {id:'h_checkup',   n:'Medical check-up & cek gigi',               e:'🩺', freq:'quarterly', cat:'health',  desc:'Cegah lebih murah daripada mengobati'},
+  {id:'h_skills',    n:'Selesaikan 1 kursus/pelatihan peningkatan skill',e:'🎓',freq:'quarterly',cat:'mental',desc:'Investasi diri untuk karir & penghasilan lebih baik'},
+  // ── TAHUNAN ──
+  {id:'h_annual_plan',n:'Buat rencana keuangan & tujuan tahun depan',e:'📅', freq:'yearly', cat:'finance', desc:'Target tabungan, investasi, gaya hidup tahun depan'},
+  {id:'h_insurance', n:'Review & perbarui polis asuransi',           e:'📋', freq:'yearly', cat:'finance', desc:'Jiwa, kesehatan, kendaraan — sesuai kebutuhan terkini'},
+  {id:'h_pajak',     n:'Lapor SPT Tahunan tepat waktu (sebelum 31 Maret)',e:'🗃️',freq:'yearly',cat:'finance',desc:'Hindari denda, manfaatkan restitusi jika ada'},
+  {id:'h_surat_berharga',n:'Cek & perbarui dokumen penting (KTP, SIM, STNK)',e:'📄',freq:'yearly',cat:'lifestyle',desc:'Pastikan tidak ada yang kadaluarsa'}
 ];
 var FREQ_LABELS = {daily:'Harian',weekly:'Mingguan',monthly:'Bulanan',quarterly:'Kuartalan',yearly:'Tahunan'};
 
@@ -942,7 +965,8 @@ function renderHabit(){
     var nm=mki('div',null,null);
     nm.innerHTML='<span style="font-size:16px;margin-right:7px">'+h.e+'</span><span class="hi-name" style="font-size:13px;font-weight:600;'+(isDone?'text-decoration:line-through;color:var(--t3)':'')+'">'+h.n+'</span>';
     var sub=mki('div','hi-sub',null);
-    sub.innerHTML='<span style="color:'+(h.cat==='finance'?'var(--ind)':h.cat==='health'?'var(--grn)':'var(--pur)')+'">'+h.cat.charAt(0).toUpperCase()+h.cat.slice(1)+'</span>';
+    sub.innerHTML='<span style="color:'+(h.cat==='finance'?'var(--ind)':h.cat==='health'?'var(--grn)':h.cat==='mental'?'var(--pur)':h.cat==='social'?'var(--tel)':'var(--amb)')+'">'+h.cat.charAt(0).toUpperCase()+h.cat.slice(1)+'</span>';
+    if(h.desc){sub.innerHTML+=' <span style="color:var(--t3)">· '+h.desc+'</span>';}
     if(streak>1){var stk=mki('span','streak',null);stk.innerHTML=' &nbsp;🔥 '+streak+' hari';sub.appendChild(stk);}
     info.appendChild(nm);info.appendChild(sub);
     row.appendChild(chk);row.appendChild(info);
@@ -964,7 +988,7 @@ function renderHabit(){
       chk.onclick=(function(hid,freq){return function(){toggleHabit(hid,freq);renderHabit();};})(h.id,h.freq);
       var info=mki('div','hi-info',null);
       info.innerHTML='<span style="font-size:15px;margin-right:7px">'+h.e+'</span><span style="font-size:13px;font-weight:600;'+(isDone?'text-decoration:line-through;color:var(--t3)':'')+'">'+h.n+'</span>'
-        +'<div class="hi-sub"><span style="background:var(--ind-l);color:var(--ind);padding:1px 6px;border-radius:10px;font-size:9px;font-weight:700">'+FREQ_LABELS[h.freq].toUpperCase()+'</span></div>';
+        +'<div class="hi-sub"><span style="background:var(--ind-l);color:var(--ind);padding:1px 6px;border-radius:10px;font-size:9px;font-weight:700">'+FREQ_LABELS[h.freq].toUpperCase()+'</span>'+(h.desc?' <span style="color:var(--t3);font-size:10px">'+h.desc+'</span>':'')+'</div>';
       row.appendChild(chk);row.appendChild(info);
       card2.appendChild(row);
     });
@@ -1002,8 +1026,37 @@ function renderSettings(){
   });
   var addRc=mkSI('➕','Tambah Rutin','',openAddRec);rc.appendChild(addRc);pg.appendChild(rc);
 
-  // Data
-  var sh3=mki('div','sh',null);sh3.style.marginTop='4px';sh3.innerHTML='<div class="st">Data</div>';pg.appendChild(sh3);
+  var sh3=mki('div','sh',null);sh3.style.marginTop='4px';sh3.innerHTML='<div class="st">Aplikasi</div>';pg.appendChild(sh3);
+  var pwaCard=mki('div','card',null);
+  var pwaRow=mki('div',null,null);pwaRow.style.cssText='display:flex;align-items:center;gap:12px';
+  pwaRow.innerHTML='<div style="font-size:36px">📲</div>';
+  var pwaInfo=mki('div',null,null);pwaInfo.style.flex='1';
+  pwaInfo.innerHTML='<div style="font-size:14px;font-weight:700">Install DanaKu Pro</div>'
+    +'<div style="font-size:12px;color:var(--t3);margin-top:3px">Pasang sebagai app di HP atau komputer. Bisa dipakai offline tanpa buka browser.</div>';
+  var installBtn=mki('button','btn-p',null);installBtn.id='install-btn';
+  installBtn.textContent=window._pwaInstallable?'📲 Install Sekarang':'✅ Sudah Terinstall / Tidak Tersedia';
+  installBtn.style.marginTop='10px';
+  if(window._pwaInstallable){
+    installBtn.onclick=function(){
+      window._pwaPrompt.prompt();
+      window._pwaPrompt.userChoice.then(function(r){
+        if(r.outcome==='accepted'){toast('🎉 DanaKu Pro berhasil diinstall!');window._pwaInstallable=false;installBtn.textContent='✅ Berhasil diinstall';}
+        window._pwaPrompt=null;window._pwaInstallable=false;
+      });
+    };
+  }else{
+    installBtn.style.cssText+='opacity:.6;cursor:default';
+    installBtn.disabled=true;
+  }
+  pwaRow.appendChild(pwaInfo);
+  pwaCard.appendChild(pwaRow);
+  pwaCard.appendChild(installBtn);
+  var pwaHint=mki('div',null,null);pwaHint.style.cssText='font-size:11px;color:var(--t3);margin-top:10px;line-height:1.6';
+  pwaHint.innerHTML='<strong>Chrome/Edge Android:</strong> Menu (⋮) → "Tambahkan ke layar utama"<br>'
+    +'<strong>Safari iPhone:</strong> Tombol Share (⬆) → "Add to Home Screen"<br>'
+    +'<strong>Chrome Desktop:</strong> Ikon install (⊕) di address bar';
+  pwaCard.appendChild(pwaHint);
+  pg.appendChild(pwaCard);
   var dc=mki('div','card-flat',null);
   dc.appendChild(mkSI('📤','Ekspor Data','Simpan sebagai JSON',exportData));
   dc.appendChild(mkSI('📥','Impor Data','Dari file / teks JSON',openImport));
@@ -1219,10 +1272,40 @@ var _tt;
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');clearTimeout(_tt);_tt=setTimeout(function(){t.classList.remove('on');},2500);}
 
 // ─── PWA ─────────────────────────────────────────────────────
+window._pwaPrompt = null;
+window._pwaInstallable = false;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  window._pwaPrompt = e;
+  window._pwaInstallable = true;
+});
+window.addEventListener('appinstalled', function() {
+  toast('🎉 DanaKu Pro berhasil diinstall!');
+  window._pwaInstallable = false;
+});
 function initPWA(){
-  var mf={name:'DanaKu Pro',short_name:'DanaKu',start_url:'.',display:'standalone',background_color:'#f4f5fb',theme_color:'#4f46e5'};
-  document.getElementById('mf-link').href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:'application/json'}));
-  if('serviceWorker' in navigator)navigator.serviceWorker.register(URL.createObjectURL(new Blob(['self.addEventListener("install",function(){});self.addEventListener("fetch",function(e){e.respondWith(fetch(e.request).catch(function(){return caches.match(e.request);}));});'],{type:'text/javascript'}))).catch(function(){});
+  var icons=[{src:"data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#4f46e5"/><text x="96" y="130" text-anchor="middle" font-size="110">💎</text></svg>'),sizes:'192x192',type:'image/svg+xml',purpose:'any maskable'}];
+  var mf={name:'DanaKu Pro',short_name:'DanaKu',description:'Pencatat Keuangan & Habit Pribadi',start_url:'.',display:'standalone',background_color:'#f4f5fb',theme_color:'#4f46e5',orientation:'portrait',icons:icons};
+  var mfBlob=new Blob([JSON.stringify(mf)],{type:'application/json'});
+  document.getElementById('mf-link').href=URL.createObjectURL(mfBlob);
+  if('serviceWorker' in navigator){
+    var swCode=[
+      'var CACHE="danaku-pro-v1";',
+      'self.addEventListener("install",function(e){self.skipWaiting();});',
+      'self.addEventListener("activate",function(e){e.waitUntil(clients.claim());});',
+      'self.addEventListener("fetch",function(e){',
+      '  if(e.request.method!=="GET")return;',
+      '  e.respondWith(caches.open(CACHE).then(function(cache){',
+      '    return fetch(e.request).then(function(res){',
+      '      if(res.ok)cache.put(e.request,res.clone());',
+      '      return res;',
+      '    }).catch(function(){return caches.match(e.request);});',
+      '  }));',
+      '});'
+    ].join('\n');
+    var swBlob=new Blob([swCode],{type:'text/javascript'});
+    navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(function(){});
+  }
 }
 
 // ─── INIT ────────────────────────────────────────────────────
